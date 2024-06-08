@@ -74,10 +74,16 @@ http://localhost:17000/docs
 ### Query example
 
 ```shell
-http://127.0.0.1:17000/api/rates?from=USD&to=RUB&value=1
+curl -X GET "http://127.0.0.1:17000/api/rates?from=USD&to=RUB&value=1"
 
 or
 
-http://127.0.0.1:17000/api/rates?to=RUB&value=1
+curl -X GET "http://127.0.0.1:17000/api/rates?to=RUB&value=1"
 
+```
+
+### Run tests
+
+```shell
+docker compose exec app pytest -v
 ```

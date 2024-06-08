@@ -67,5 +67,5 @@ async def test_rates_w_wrong_currency(client: TestClient, params) -> None:
     assert resp.status_code == status.HTTP_400_BAD_REQUEST
     assert (
         resp_json["error"]["error_detail"]
-        == "Not supported convert to selected currency XXX"
+        == "Convert to selected currency XXX not supported!"
     )
