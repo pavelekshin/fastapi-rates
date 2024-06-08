@@ -14,8 +14,8 @@ router = APIRouter()
     response_model=ConverterResponse,
     status_code=status.HTTP_200_OK,
 )
-async def get_rates(
-        query: ExchangeQuery = Depends(),
+async def rates_converter(
+    query: ExchangeQuery = Depends(),
 ):
     client = Client()
     response: bytes = await client.rates(base=query.from_currency)
@@ -23,7 +23,7 @@ async def get_rates(
 
     if not (convert_rates := exchange_rates.rates.get(query.to_currency)):
         raise ConvertOperationError(
-            "Not supported convert to selected currency {}".format(query.to_currency)
+            "Convert to selected currency {} not supported!".format(query.to_currency)
         )
 
     converted_sum = await converter(convert_rates, query.value)

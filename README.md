@@ -10,7 +10,7 @@
 ├── logging.ini
 ├── requirements.txt
 ├── ruff.toml
-├── .env
+├── .env.example
 ├── scripts                       - scripts
 │   └── start-dev.sh
 └── src                           - global staff
@@ -35,11 +35,14 @@
 ```
 
 > [!CAUTION]
-> External api for rates - https://openexchangerates.org/ \
+> External API for rates - https://openexchangerates.org/ \
 > free plan provide rates only for USD base
 
 > [!NOTE]
 > The from - query parameter by default assigned to USD
+
+> [!IMPORTANT]
+> pydantic attempts to convert the value to a string, then passes the string to Decimal(v)
 
 - async IO operations
 - easy local development
@@ -48,6 +51,7 @@
     - environment with configured Redis cache
 - redis cache
 - pydantic model
+- Decimal for rates calculation
 - pytest
 - linters / format with ruff
 - global custom exceptions
@@ -69,8 +73,10 @@ http://localhost:17000/docs
 ### Query example
 
 ```shell
-http://127.0.0.1:8000/api/rates?from=USD&to=RUB&value=1
+http://127.0.0.1:17000/api/rates?from=USD&to=RUB&value=1
+
 or
-http://127.0.0.1:8000/api/rates?to=RUB&value=1
+
+http://127.0.0.1:17000/api/rates?to=RUB&value=1
 
 ```
