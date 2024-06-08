@@ -40,7 +40,7 @@
 > Free plan support only USD base
 
 > [!NOTE]
-> The from - query parameter by default assigned to USD
+> The "from" - query parameter by default assigned to USD
 
 > [!IMPORTANT]
 > pydantic attempts to convert the value to a string, then passes the string to Decimal(v)
