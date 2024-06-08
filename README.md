@@ -29,8 +29,8 @@
         ├── exceptions.py         
         ├── helper.py             - helper func
         ├── router.py             
-        ├── utils.py                      
-        └── schemas.py            - modul pydantic schema
+        ├── schemas.py            - pydantic schemas            
+        └── utils.py            
 
 ```
 
