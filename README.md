@@ -36,7 +36,8 @@
 
 > [!CAUTION]
 > External API for rates - https://openexchangerates.org/ \
-> free plan provide rates only for USD base
+> Changing the base currency is available only for paid plans.
+> Free plan support only USD base
 
 > [!NOTE]
 > The from - query parameter by default assigned to USD
