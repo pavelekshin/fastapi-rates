@@ -52,7 +52,7 @@
     - environment with configured Redis cache
 - redis cache
 - pydantic model
-- Decimal for rates calculation
+- decimal for rates calculation
 - pytest
 - linters / format with ruff
 - global custom exceptions
