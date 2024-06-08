@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: app_exchange
+    image: app_exchange_image
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/src
+    ports:
+      - "17000:8000"
+    depends_on:
+      - app_redis
+  app_redis:
+    image: redis:6.2-alpine
+    hostname: app_exchange_redis
+    container_name: app_exchange_redis
+    command:
+      - 'redis-server'
+      - '--requirepass myStrongPassword'
+    expose:
+      - 6379
+
+
+networks:
+  default:
+    external: true
+    name: app_exchange
