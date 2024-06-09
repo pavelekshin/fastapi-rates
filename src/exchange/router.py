@@ -1,3 +1,5 @@
+from typing import Annotated
+
 from fastapi import APIRouter, Depends
 from starlette import status
 
@@ -15,7 +17,7 @@ router = APIRouter()
     status_code=status.HTTP_200_OK,
 )
 async def rates_converter(
-    query: ExchangeQuery = Depends(),
+    query: Annotated[ExchangeQuery, Depends()],
 ):
     client = Client()
     response: bytes = await client.rates(base=query.from_currency)

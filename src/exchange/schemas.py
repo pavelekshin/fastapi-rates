@@ -29,7 +29,7 @@ class ExchangeQuery(BaseModel):
     to_currency: Annotated[
         ISO4217, Field(Query(..., description="to currency", alias="to"))
     ]
-    value: Decimal = Field(Query(..., description="value to exchange"))
+    value: Annotated[Decimal, Field(Query(..., description="value to exchange"))]
 
 
 class ConverterResponse(BaseModel):
