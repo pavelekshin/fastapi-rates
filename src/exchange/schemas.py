@@ -24,8 +24,8 @@ class ExchangeQuery(BaseModel):
     )
 
     from_currency: Annotated[
-        ISO4217, Field(Query(description="from currency", alias="from"))
-    ] = "USD"
+        ISO4217, Field(Query(description="from currency", alias="from", default="USD"))
+    ]
     to_currency: Annotated[
         ISO4217, Field(Query(..., description="to currency", alias="to"))
     ]

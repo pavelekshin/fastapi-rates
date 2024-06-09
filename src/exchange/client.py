@@ -14,12 +14,12 @@ class Client:
     This is the client to Public APIs service, which return exchange rates
     """
 
-    BASE_URL: str = "https://openexchangerates.org/api/latest.json"
+    BASE_URL: str = "https://openexchangerates.org/api"
     APIKEY: str = settings.EXCHANGE_SERVICE_APIKEY
 
     @property
     def client(self):
-        return httpx.AsyncClient(timeout=5.0)
+        return httpx.AsyncClient(base_url=self.BASE_URL, timeout=5.0)
 
     @cache(seconds=60)
     async def rates(self, base: str) -> bytes:
@@ -29,7 +29,7 @@ class Client:
                 "base": base,
             }
 
-            response = await client.get(url=self.BASE_URL, params=params)
+            response = await client.get(url="/latest.json", params=params)
             if not response.is_success:
                 if response.status_code == 401:
                     raise InvalidTokenError()
