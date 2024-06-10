@@ -24,12 +24,45 @@ class ExchangeQuery(BaseModel):
     )
 
     from_currency: Annotated[
-        ISO4217, Field(Query(description="from currency", alias="from", default="USD", example="USD"))
+        ISO4217,
+        Field(
+            Query(
+                description="from currency",
+                alias="from",
+                default="USD",
+            )
+        ),
     ]
     to_currency: Annotated[
-        ISO4217, Field(Query(..., description="to currency", alias="to", example="RUB"))
+        ISO4217,
+        Field(Query(..., description="to currency", alias="to")),
     ]
-    value: Annotated[Decimal, Field(Query(..., description="value to exchange", example="1.5"))]
+    value: Annotated[
+        Decimal,
+        Field(
+            Query(
+                ...,
+                description="value to exchange",
+                openapi_examples={
+                    "normal float": {
+                        "summary": "Normal float number",
+                        "description": "float number",
+                        "value": "1.5",
+                    },
+                    "normal int": {
+                        "summary": "Normal int number",
+                        "description": "int number",
+                        "value": "1",
+                    },
+                    "incorrect": {
+                        "summary": "Incorrect input",
+                        "description": "incorrect delimiter",
+                        "value": "1,5",
+                    },
+                },
+            )
+        ),
+    ]
 
 
 class ConverterResponse(BaseModel):
