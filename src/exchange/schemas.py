@@ -24,12 +24,12 @@ class ExchangeQuery(BaseModel):
     )
 
     from_currency: Annotated[
-        ISO4217, Field(Query(description="from currency", alias="from", default="USD"))
+        ISO4217, Field(Query(description="from currency", alias="from", default="USD", example="USD"))
     ]
     to_currency: Annotated[
-        ISO4217, Field(Query(..., description="to currency", alias="to"))
+        ISO4217, Field(Query(..., description="to currency", alias="to", example="RUB"))
     ]
-    value: Annotated[Decimal, Field(Query(..., description="value to exchange"))]
+    value: Annotated[Decimal, Field(Query(..., description="value to exchange", example="1.5"))]
 
 
 class ConverterResponse(BaseModel):
