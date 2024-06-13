@@ -10,7 +10,12 @@
 ├── logging.ini
 ├── requirements.txt
 ├── ruff.toml
+├── pytest.ini
 ├── .env.example
+├── tests                         - tests
+│   ├──  __init__.py
+│   ├── conftest.py
+│   └── exchange                  - testing module
 ├── scripts                       - scripts
 │   └── start-dev.sh
 └── src                           - global staff
